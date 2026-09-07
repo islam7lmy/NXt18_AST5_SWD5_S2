@@ -618,19 +618,207 @@ namespace Demo01
             //    input = Console.ReadLine();
             //}
 
-            while(true)
-            {
-                Console.WriteLine("enter first number");
-                while (!int.TryParse(Console.ReadLine(), out int num01))
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid integer.");
-                }
+            //while(true)
+            //{
+            //    Console.WriteLine("enter first number");
+            //    while (!int.TryParse(Console.ReadLine(), out int num01))
+            //    {
+            //        Console.WriteLine("Invalid input. Please enter a valid integer.");
+            //    }
 
-                //[quiz] write calculater program using while loop and switch statment and make it protictive
+            //    //[quiz] write calculater program using while loop and switch statment and make it protictive
+            //}
+
+            #endregion
+
+            #region Do While
+            //do
+            //{
+            //    Console.WriteLine("Enter First number:");
+            //} while (!int.TryParse(Console.ReadLine(), out int num01));
+            #endregion
+
+            #region Foreach
+            //List<string> names = new List<string>()
+            //{
+            //    "ali",
+            //    "ahmed",
+            //    "sara"
+            //};
+
+
+            //for(int i = 0; i <= names.Count; i++)
+            //{
+            //    names[i] = $"hello {names[i]}";
+            //    Console.WriteLine(names[i]);
+            //}
+
+            ////for reading 
+            //foreach(string item in names)
+            //{
+            //    //item = $"hello {item}";
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #region EX00
+            //int num01, num02;
+            //char op;
+            //double result;
+
+            ////do
+            ////{
+            ////    Console.WriteLine("Enter First number:");
+            ////} while (!int.TryParse(Console.ReadLine(), out num01));
+
+            //Console.WriteLine("enter first number");
+            //while (!int.TryParse(Console.ReadLine(), out num01))
+            //{
+            //    Console.WriteLine("Invalid input. Please enter a valid integer.");
+            //}
+
+            //do
+            //{
+            //    Console.WriteLine("enter operation (+ - * / %)");
+            //} while (
+            //!(char.TryParse(Console.ReadLine(), out op)  //true
+            //&&
+            //(op == '+' || op == '-' || op == '*' || op == '/' || op == '%')) //true
+            //);
+
+            //do
+            //{
+            //    Console.WriteLine($"enter last number{(op == '/' || op == '%' ? " and make sure not be zero" : "")}");
+            //} while (
+            //!int.TryParse(Console.ReadLine(), out num02) //false
+            //||
+            //((op == '/' || op == '%') && num02 == 0)  //true
+            //);
+
+            ////if (op == '+' || op == '-' || op == '*')
+            ////{
+            ////    Console.WriteLine("enter first number");
+            ////    while (!int.TryParse(Console.ReadLine(), out num02))
+            ////    {
+            ////        Console.WriteLine("Invalid input. Please enter a valid integer.");
+            ////    }
+            ////}
+            ////else
+            ////{
+            ////    do
+            ////    {
+            ////        Console.WriteLine($"enter last number and make sure not be zero");
+            ////    } while(!int.TryParse(Console.ReadLine(), out num02) && num02 != 0);
+            ////}
+
+            //switch (op)
+            //{
+            //    case '+': result = num01 + num02; break;
+            //    case '-': result = num01 - num02; break;
+            //    case '*': result = num01 * num02; break;
+            //    case '/': result = (double) num01 / num02; break;
+            //    case '%': result = num01 % num02; break;
+            //}
+
+            #endregion
+            #endregion
+
+            #region block scope
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            ////Console.WriteLine(i); //invalid [out of scope]
+
+            //while (double.TryParse(Console.ReadLine(), out double X))
+            //{
+            //    Console.WriteLine(X);
+            //}
+
+            //X = 3; //invalid [out of scope]
+
+            //if (double.TryParse(Console.ReadLine(), out double X))
+            //{
+            //    int Y = 0;
+            //    Console.WriteLine(X);
+            //}
+
+            //X = 10;
+            //y = 20; //invalid[out of scope]
+
+
+            //{
+            //    int z = 0;
+            //}
+
+            //{
+            //    int z = 0;
+            //}
+            #endregion
+
+            #region arrays
+            #region one D Array
+            //int[] numbers;
+            /////declare for reference from type array of integers
+            /////referring to null => default value of refernce datatype
+            /////4 bytes will be allocated in stack => CLR
+            /////zero bytes will be allocated in heap => CLR
+
+            //numbers = new int[5];
+            ///// CLR allocate 20 bytes [5 * 4byte] in heap
+            ///// intialized with the default value of int [0]
+
+            //int[] numbers2 = { 1,2,3,4,5}; //syntax sugaer
+            //numbers = new int[] { 1, 2, 3, 4, 5 };
+            //numbers = new int[5] { 1, 2, 3, 4, 5 };
+            //Console.WriteLine(numbers.Length);  // size
+            //numbers[4] = 1;
+            //numbers[5] = 2;
+
+            //int[] numbers = new int[5];
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    do
+            //    {
+            //        Console.WriteLine($"Please enter the {i + 1} element of array:");
+            //    } while (!int.TryParse(Console.ReadLine(), out numbers[i]));
+            //}
+
+            //foreach (var item in numbers)
+            //{
+            //    //int.TryParse(Console.ReadLine(), out item); //invalid
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
+            #region Two D Array [Rectangular]
+            int[,] Marks;
+            Marks = new int[3,5];
+            Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
+            Console.WriteLine($"number of rows = {Marks.GetLength(0)} , number of column = {Marks.GetLength(1)}");
+
+            ///read elments of arry from user 
+            ///print elemnts of arry to user
+            ///write program to do that with protictive code and readable messages
+            for (int i = 0; i < Marks.GetLength(0); i++) //0,1,2
+            {
+                for (int j = 0; j < Marks.GetLength(1); j++) //0,1,2,3,4
+                {
+                    Console.WriteLine($"insert array elemnt Marks[{i},{j}]");
+                    Marks[i, j] = int.Parse(Console.ReadLine());
+                }
             }
 
+            //[quiz] write same program with only one loop
+
+            foreach (var item in Marks)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
             #endregion
         }
+
     }
 }
