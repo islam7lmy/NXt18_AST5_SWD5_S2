@@ -793,29 +793,96 @@ namespace Demo01
 
             #endregion
             #region Two D Array [Rectangular]
-            int[,] Marks;
-            Marks = new int[3,5];
-            Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
-            Console.WriteLine($"number of rows = {Marks.GetLength(0)} , number of column = {Marks.GetLength(1)}");
+            //int[,] Marks;
+            //Marks = new int[3,5];
+            //Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
+            //Console.WriteLine($"number of rows = {Marks.GetLength(0)} , number of column = {Marks.GetLength(1)}");
 
             ///read elments of arry from user 
             ///print elemnts of arry to user
             ///write program to do that with protictive code and readable messages
-            for (int i = 0; i < Marks.GetLength(0); i++) //0,1,2
-            {
-                for (int j = 0; j < Marks.GetLength(1); j++) //0,1,2,3,4
-                {
-                    Console.WriteLine($"insert array elemnt Marks[{i},{j}]");
-                    Marks[i, j] = int.Parse(Console.ReadLine());
-                }
-            }
+            //for (int i = 0; i < Marks.GetLength(0); i++) //0,1,2
+            //{
+            //    for (int j = 0; j < Marks.GetLength(1); j++) //0,1,2,3,4
+            //    {
+            //        Console.WriteLine($"insert array elemnt Marks[{i},{j}]");
+            //        Marks[i, j] = int.Parse(Console.ReadLine());
+            //    }
+            //}
 
             //[quiz] write same program with only one loop
 
-            foreach (var item in Marks)
-            {
-                Console.WriteLine(item);
-            }
+            //for (int i = 0; i < Marks.Length; i++)
+            //{
+            //    int row = i / Marks.GetLength(1);
+            //    int column = i % Marks.GetLength(1);
+            //    Console.WriteLine($"insert array elemnt Marks[{row},{column}]");
+            //    Marks[row, column] = int.Parse(Console.ReadLine());
+            //}
+            //foreach (var item in Marks)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+            #region Two D Array [Jaged array]
+            //int[][,] numbers;
+            //numbers = new int[3][,];
+
+            //numbers[0] = new int[3, 5];
+            //numbers[1] = new int[1, 3];
+            //numbers[2] = new int[2, 1];
+
+            //Console.WriteLine($"the size of array = {numbers.Length} , the number of dimensions = {numbers.Rank}");
+            //Console.WriteLine($"the size of array = {numbers[0].Length} , the number of dimensions = {numbers[0].Rank}");
+            //Console.WriteLine($"number of rows = {numbers[0].GetLength(0)} , number of column = {numbers[0].GetLength(1)}");
+
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    for (int j = 0; j < numbers[i].Length; j++)
+            //    {
+            //        int row = j / numbers[i].GetLength(1);
+            //        int column = j % numbers[i].GetLength(1);
+            //        while(!int.TryParse(Console.ReadLine(),out numbers[i][row, column]))
+            //        {
+            //            Console.WriteLine("invalid input, please enter a valid integer"); 
+            //        }
+            //    }
+            //}
+            #endregion
+            #region Array methods
+            //int[] numbers = { 8, 3, 4, 5, 6, 7, 9, 7, 1, 3, 8 };
+            #region 1. class member method
+            //Array.Sort(numbers);
+            //Array.Reverse(numbers);
+            //Array.Clear(numbers);
+            //Console.WriteLine(Array.IndexOf(numbers,7)); //find first index => 5
+            //Console.WriteLine(Array.LastIndexOf(numbers,7)); //find last index => 7
+
+            //var arr = Array.CreateInstance(typeof(int), 10); //int[] arr = new int[10];
+            #endregion
+            #region 2. Object Member Methods [Non-Static Methods]
+            //int[] newarr = new int[7];
+            //numbers.CopyTo(newarr,0);
+            //numbers.SetValue(18, 5); // numbers[5] = 18;
+
+            //int[] dest = new int[numbers.Length];
+            //numbers.CopyTo(dest, 0);
+
+            //var dest01 = Array.CreateInstance(numbers.GetType().GetElementType(), numbers.Length);
+            //numbers.CopyTo(dest01, 0);
+
+            //foreach (int item in newarr)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+
+            ///Ex01: write a program find the longest distance between 
+            ///Two equal cells.
+            ///In this example.The distance is 
+            ///measured by the number Of cells- for example
+
             #endregion
             #endregion
         }
