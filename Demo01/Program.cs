@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
+using System.Xml.Linq;
 
 namespace Demo01
 {
@@ -885,7 +887,212 @@ namespace Demo01
 
             #endregion
             #endregion
+
+            #region Boxing vs unBoxing
+            //int x = 10; //value type
+            //object obj = x; //parent = child; //boxing
+            //x = 20;
+            //Console.WriteLine(obj);
+
+
+            //object[] data = new object[3];
+            //data[0] = 10; //boxing => value type to reference type
+            //data[1] = 3200.50m; //boxing => value type to reference type
+            //data[2] = "ali"; // not boxing
+
+
+            //ArrayList list = new ArrayList();
+            //list.Add(10); //boxing
+            //list.Add("test");
+            //list.Add(true);
+
+
+            //List<int> ints = new List<int>();
+            //ints.Add(10);
+            ////ints.Add("test"); notvalid
+
+            //unboxing
+            //object obj = 10; //boxing
+            //int x = (int)obj; //child = parent; => explict casting //unboxing
+            //Console.WriteLine(x);
+            //double y = (double)obj; //unboxing
+            //Console.WriteLine(y);
+
+            //int a = 10;
+            //double b = a;
+            //Console.WriteLine(b);
+
+            //animal = dog;
+            //animal = cat;
+            //dog = animal;
+
+            //object O1 = new object();
+            //O1 = "Ahmed"; //not boxing
+
+            //O1 = 5;    // int[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = 'A';  // char[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = 3.3;  // double[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = true; // bool[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new DateTime();  // DateTime[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new DateOnly(); // DateOnly[ValueType] to object[ReferenceType] -> Boxing
+            //O1 = new TimeOnly(); // TimeOnly[ValueType] to object[ReferenceType] -> Boxing
+            #endregion
+
+            #region Nullable types
+            //nullable types : value type allows null as value
+            // Assign Null as a Value for ValueType[int, char, bool, decimal, etc] Variables
+
+
+            // int age = null; //invalid
+
+            //int? age = null;   //nullable integer : allow int value + null
+            //double? age01 = null; //nullable double : allow dounble value + null
+
+            //int x = 8;
+            //int? y = x; //nullable integer 
+            //y = null;
+            //x = (int) y; //explicit casting => unsafe casting
+
+            //if (y is not null)
+            //    x = (int)y; // => safe casting 
+
+            //if (y.HasValue)
+            //    x = y.Value;
+
+
+            ////notification
+            //string t = "test";
+            //t = null;
+
+            //string? tt = "test";
+            //tt = null;
+
+            //int x = 0; 
+            //int? y = 10;
+
+            //x = (int)y; // unsafe casting
+
+            //if (y.HasValue)
+            //    x = y.Value;
+
+            //x = y.HasValue ? y.Value : 0;
+
+            //x = y ?? 0;
+
+            //x = y.HasValue ? y.Value : 0;
+
+            ///////null coalescing operator
+            //x = y ?? 0; 
+
+            #endregion
+
+            #region null propagation operator
+            //int x = default; //0
+            //int[] arr = default; //null
+
+            //int length = arr.Length; //runtime error
+
+            //if(arr is not null)
+            //    length = arr.Length;
+
+            //if (arr is not null)
+            //{
+            //    for (int i = 0; i < arr.Length; i++)
+            //    {
+            //        Console.WriteLine(arr[i]);
+            //    }
+            //}
+
+            //for (int i = 0; arr is not null && i < arr.Length; i++)
+            //{
+            //    Console.WriteLine(arr[i]);
+            //}
+
+            //int? length = arr?.Length;
+
+            //int length02 = arr?.Length ?? 0;
+
+            //employee?.department?.name ?? "N/A";
+            #endregion
+
+            #region Function
+            #region prototype and calling
+            //PrintLine();
+
+            //PrintLine(20,"$"); // passing parameters by postion
+            //PrintLine(pattern: "$", number: 20); //passing parameters by name
+            //PrintLine(20);
+
+            //printline with default value of parmeters
+            //PrintLine();
+            //PrintLine(20);
+            //PrintLine(pattern: "$");
+            //PrintLine(20, "$");
+            #endregion
+            #endregion
         }
 
+        #region functions
+        #region Prototype and calling
+        //print line of 10 element of "#";
+
+        /// <summary>
+        /// function to print line of 10 element of "#"
+        /// object member method
+        /// </summary>
+        //public void PrintLine()
+        //{
+        //    for (int i = 1; i <= 10; i++)
+        //    {
+        //        Console.Write("#");
+        //    }
+        //    Console.WriteLine("");
+        //}
+
+        /// <summary>
+        /// function to print line of 10 element of "#"
+        /// class member method
+        /// </summary>
+        //public static void PrintLine()
+        //{
+        //    for (int i = 1; i <= 10; i++)
+        //    {
+        //        Console.Write("#");
+        //    }
+        //    Console.WriteLine("");
+        //}
+
+
+        //print line of number inserted by user and pattern inserted by user
+        //public static void PrintLine(int number, string pattern)
+        //{
+        //    for (int i = 1; i <= number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        //public static void PrintLine(int number = 10, string pattern = "#")
+        //{
+        //    for (int i = 1; i <= number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+        #endregion
+        #endregion
+
     }
+
+    //class test01
+    //{
+    //    void test()
+    //    {
+    //        //Program.PrintLine(); 
+    //        //Program p01 = new Program();
+    //        //p01.PrintLine(); 
+    //    }
+    //}
 }
