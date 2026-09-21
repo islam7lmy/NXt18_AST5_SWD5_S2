@@ -1087,6 +1087,65 @@ namespace Demo01
             //SumArraywithparams(out int sum,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50);
             //Console.WriteLine(sum);
             #endregion
+
+            //Point p1 = new Point();
+            //p1.X = 1;
+            //p1.Y = 2;
+
+            //assignpoint(p1); //passing by value
+            //Console.WriteLine(p1.X);
+
+
+            //assignpoint(ref p1); //passing by ref
+            //Console.WriteLine(p1.X);
+            #endregion
+
+            #region Exceptions Handling
+            //try
+            //{
+            //    DoSomeCode();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    //log file
+            //    Console.WriteLine(ex.Message);
+            //    throw ex;
+            //}
+            //finally
+            //{
+            //    //[release || deallocate || delete || close] unmanaged resources (database connection , file)
+            //    Console.WriteLine("finally");
+            //}
+
+            ////DoSomeCode();
+            //Console.WriteLine("program is still running");
+            #endregion
+
+            #region Enums [Labels]
+            #region Ex01
+            //Days day = Days.mon;
+            //Console.WriteLine(day);//day.ToString() => mon
+            //Console.WriteLine((int)day); // 2
+
+            //Daysss day01 = Daysss.mon;
+            //Console.WriteLine(day01);//day.ToString() => mon
+            //Console.WriteLine((int)day01); //200
+
+            //day =(Days) 3; //explicit casting
+            //Console.WriteLine(day); 
+            #endregion
+            #region Ex02
+            //Console.WriteLine((int) gender.Male);
+            //Console.WriteLine((int) gender.male);
+            //Console.WriteLine((int) gender.m);
+            //Console.WriteLine((int) gender.M);
+            #endregion
+            #region Ex03
+            Branches branch = Branches.Madi;
+            Console.WriteLine((int)branch);
+            #endregion
+
             #endregion
         }
 
@@ -1210,29 +1269,103 @@ namespace Demo01
         #endregion
 
         #region Params
-        static int SumArray(int[] arr)
-        {
-            int sum = 0;
-            foreach (int i in arr)
-            {
-                sum += i;
-            }
-            return sum;
-        }
+        //static int SumArray(int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int i in arr)
+        //    {
+        //        sum += i;
+        //    }
+        //    return sum;
+        //}
 
-        static int SumArraywithparams(out int sum , params int[] arr)
-        {
-            //int sum = 0;
-            sum = 0;
-            foreach (int i in arr)
-            {
-                sum += i;
-            }
-            return sum;
-        }
+        //static int SumArraywithparams(out int sum , params int[] arr)
+        //{
+        //    //int sum = 0;
+        //    sum = 0;
+        //    foreach (int i in arr)
+        //    {
+        //        sum += i;
+        //    }
+        //    return sum;
+        //}
+        #endregion
+
+        ////passing reference type by value
+        //static void assignpoint(Point p)
+        //{
+        //    p = new Point();
+        //    p.X = 10;
+        //    p.Y = 20;
+        //}
+
+        ////passing reference type by ref
+        //static void assignpoint(ref Point p)
+        //{
+        //    p = new Point();
+        //    p.X = 10;
+        //    p.Y = 20;
+        //}
+        #endregion
+
+        #region Exceptions Handling
+        //static void DoSomeCode()
+        //{
+        //    int x, y, z;
+        //    Console.WriteLine("please enter first number:");
+        //    x = int.Parse(Console.ReadLine());
+
+        //    Console.WriteLine("please enter last number:");
+        //    y = int.Parse(Console.ReadLine());
+
+        //    z = x / y;
+
+        //    Console.WriteLine($"result is : {z}");
+
+        //    int[] arr = { 1, 2, 3 };
+
+        //    Console.WriteLine("please enter index number to change it's value:");
+        //    int i = int.Parse(Console.ReadLine());
+        //    arr[i] = 99;
+        //    Console.WriteLine(arr[i]);
+        //}
+        //static void DoSomeProtictiveCode()
+        //{
+        //    try
+        //    {
+        //        int x, y, z;
+        //        do
+        //        {
+        //            Console.WriteLine("please enter first number:");
+        //        } while (!int.TryParse(Console.ReadLine(), out x));
+
+        //        do
+        //        {
+        //            Console.WriteLine("please enter last number:");
+        //        } while (!int.TryParse(Console.ReadLine(), out y) || y == 0);
+
+        //        z = x / y;
+
+        //        Console.WriteLine($"result is : {z}");
+
+        //        int[] arr = { 1, 2, 3 };
+        //        int i = 0;
+        //        do
+        //        {
+        //            Console.WriteLine("please enter index number to change it's value:");
+        //        } while (!int.TryParse(Console.ReadLine(), out i) || i < 0 || i >= arr.Length);
+
+        //        arr[i] = 99;
+        //        Console.WriteLine(arr[i]);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
 
         #endregion
-        #endregion
+
 
     }
 
@@ -1246,4 +1379,77 @@ namespace Demo01
     //    }
     //}
 
+
+    #region Enums [labels]
+    enum Days
+    {
+        sat,
+        sun,
+        mon,
+        tus,
+        wed,
+        thr,
+        fri
+    }
+    
+    enum Daysss : int
+    {
+        sat = 10,
+        sun = 100,
+        mon = 200,
+        tus = 300,
+        wed = 400,
+        thr = 500,
+        fri = 600
+    }
+
+    enum gender
+    {
+        Male = 0,
+        male = 0,
+        m = 0,
+        M = 0,
+        Female = 1,
+        female = 1,
+        f = 1,
+        F = 1
+    }
+
+    enum Branches : byte // 0 => 255
+    {
+        smartvally = 105,
+        Madi,
+        _6OCT = 252,
+        Mansoura = 253,
+        Asyut = 254,
+        banha = 255,
+        //Suize  => not valid [is too large to fit it's datatype]
+    }
+
+
+    #region Ex: Enum + Params
+    ///class member method take tax and service and all ordered items 
+    ///print the shape as bellow:
+    /// order details :
+    /// pizza : 120
+    /// juice : 60
+    /// ـــــــــــــــــــ
+    /// total item : 180
+    /// tax : (total item * (tax / 100))
+    /// service : (total item * (service  / 100))
+    /// ـــــــــــــــــــ
+    /// total oreder : total + tax + service
+    /// return total + tax + service;
+    /// 
+    /// Menu items is:
+    /// Pizaa = 120,
+    /// Burger = 150,
+    /// Juice = 40,
+    /// Salad = 30,
+    /// Dessert = 60
+
+
+
+    #endregion
+    #endregion
 }
