@@ -1142,10 +1142,57 @@ namespace Demo01
             //Console.WriteLine((int) gender.M);
             #endregion
             #region Ex03
-            Branches branch = Branches.Madi;
-            Console.WriteLine((int)branch);
+            //Branches branch = Branches.Madi;
+            //Console.WriteLine((int)branch);
             #endregion
+            #region Ex: Enum + Params
+            //CalculateBill(14, 12, Menu.Pizaa, Menu.Juice, Menu.Salad, Menu.Dessert);
+            #endregion
+            #region Ex : Permission
+            //Permission mypermission = Permission.write;
+            //Console.WriteLine(mypermission);
 
+            //mypermission = Permission.read;
+            ////Console.WriteLine(mypermission);
+
+            //mypermission =(Permission) 3;
+            //Console.WriteLine(mypermission);
+
+
+            //mypermission = (Permission)241;
+            //Console.WriteLine(mypermission);
+
+            ////// If You want to add permission , Do OR Operation
+            //mypermission |= Permission.read;
+            //mypermission |= Permission.select;
+
+            //////// If You Want To Remove (Deny) Permission, Do Not With And operation
+            //mypermission &= ~Permission.select;
+
+            ////////If You Want To remove if exists or Add Permission if not exists, Do XOR Operation
+            //mypermission ^= Permission.select;
+
+
+            ////// Check Read Permission is existed inside MyP
+            //if((mypermission & Permission.read) == Permission.read)
+            //    Console.WriteLine("permission allowed");
+            //else
+            //    Console.WriteLine("permission is denied");
+
+
+            //if ((mypermission & Permission.execute) == Permission.execute)
+            //    Console.WriteLine("permission allowed");
+            //else
+            //    Console.WriteLine("permission is denied");
+
+            // Console.WriteLine(mypermission);
+            #endregion
+            #region quiz
+            ////write 3 class memeber methos
+            ////function to add permissions => current permission , permission to add => my.addpermission()
+            ///function to remove permissions
+            ///function to check if permission exists return true else return false
+            #endregion
             #endregion
         }
 
@@ -1366,6 +1413,28 @@ namespace Demo01
 
         #endregion
 
+        #region Ex: Enum + Params
+
+        static void CalculateBill(int tax, int service, params Menu[] items)
+        {
+            double total = 0, taxinmony = 0, serviceinmony = 0;
+            Console.WriteLine("order details :");
+            foreach (Menu item in items)
+            {
+                Console.WriteLine($"{item} : {(int)item}");
+                total += (int)item;
+            }
+            Console.WriteLine("ـــــــــــــــــــــــــــــ");
+            Console.WriteLine($"total items : {total}");
+            taxinmony = total * ((double)tax / 100);
+            Console.WriteLine($"Tax : {taxinmony}");
+            serviceinmony = total * ((double)service / 100);
+            Console.WriteLine($"Service : {serviceinmony}");
+            Console.WriteLine("ـــــــــــــــــــــــــــــ");
+            total += serviceinmony + taxinmony;
+            Console.WriteLine($"total order : {total}");
+        }
+        #endregion
 
     }
 
@@ -1381,6 +1450,7 @@ namespace Demo01
 
 
     #region Enums [labels]
+    #region Ex
     enum Days
     {
         sat,
@@ -1391,7 +1461,7 @@ namespace Demo01
         thr,
         fri
     }
-    
+
     enum Daysss : int
     {
         sat = 10,
@@ -1424,8 +1494,8 @@ namespace Demo01
         Asyut = 254,
         banha = 255,
         //Suize  => not valid [is too large to fit it's datatype]
-    }
-
+    } 
+    #endregion
 
     #region Ex: Enum + Params
     ///class member method take tax and service and all ordered items 
@@ -1448,8 +1518,48 @@ namespace Demo01
     /// Salad = 30,
     /// Dessert = 60
 
+    enum Menu
+    {
+        Pizaa = 120,
+        Burger = 150,
+        Juice = 40,
+        Salad = 30,
+        Dessert = 60
+    }
 
 
     #endregion
+
+    class users
+    {
+        public int id;
+        public string name;
+        public Permission MyPermission; // 1 byte
+
+        //public bool write;      //1byte
+        //public bool read;       //1byte
+        //public bool update;     //1byte
+        //public bool delete;     //1byte
+        //public bool execute;    //1byte
+        //public bool select;     //1byte
+        //public bool select1;    //1byte
+        //public bool select2;    //1byte
+
+    }
+    //{1,"ahmed",true,true,false,true,true,false,true,false}
+    //{1 , "ahmed" , 241} //update & delete
+
+    [Flags] //data annotation (decrator) => learn new behavior to calc
+    enum Permission : byte //0 : 255
+    {
+        write = 1,
+        read = 2,
+        update = 4,
+        delete = 8,
+        execute = 16,
+        select = 32,
+        select1 = 64,
+        select2 = 128
+    }
     #endregion
 }
