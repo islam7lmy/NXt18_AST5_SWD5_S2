@@ -11,6 +11,7 @@ namespace Demo01
         /// </summary>
         static void Main()
         {
+
             #region Comments
             //line comment
 
@@ -1188,10 +1189,24 @@ namespace Demo01
             // Console.WriteLine(mypermission);
             #endregion
             #region quiz
-            ////write 3 class memeber methos
-            ////function to add permissions => current permission , permission to add => my.addpermission()
-            ///function to remove permissions
-            ///function to check if permission exists return true else return false
+            //////write 3 class memeber methos
+            //Permission mypermission = Permission.write;
+            /////function to add permissions => current permission , permission to add => my.addpermission()
+
+            ////AddPErmission(ref mypermission, Permission.read);
+            ////AddPErmission(ref mypermission, Permission.delete);
+            ////AddPErmission(ref mypermission, Permission.execute);
+
+            //AddPErmission(ref mypermission, Permission.read, Permission.delete, Permission.execute);
+
+            /////function to remove permissions
+            //RemovePErmission(ref mypermission, Permission.delete , Permission.execute);
+
+            /////function to check if permission exists return true else return false
+            //Console.WriteLine(CheckPermission(mypermission, Permission.read) ? "allowed" : "denied");
+            //Console.WriteLine(CheckPermission(mypermission, Permission.delete) ? "allowed" : "denied");
+
+            //Console.WriteLine(mypermission); //write,read 
             #endregion
             #endregion
         }
@@ -1414,7 +1429,6 @@ namespace Demo01
         #endregion
 
         #region Ex: Enum + Params
-
         static void CalculateBill(int tax, int service, params Menu[] items)
         {
             double total = 0, taxinmony = 0, serviceinmony = 0;
@@ -1433,6 +1447,25 @@ namespace Demo01
             Console.WriteLine("ـــــــــــــــــــــــــــــ");
             total += serviceinmony + taxinmony;
             Console.WriteLine($"total order : {total}");
+        }
+        #endregion
+
+        #region Enums
+        static void AddPErmission(ref Permission Current, params Permission[] PermissionToAdd)
+        {
+            foreach (Permission item in PermissionToAdd)
+                Current |= item;
+        }
+
+        static void RemovePErmission(ref Permission Current, params Permission[] PermissionToRemove)
+        {
+            foreach (Permission item in PermissionToRemove)
+                Current &= ~item;
+        }
+
+        static bool CheckPermission(Permission Current, Permission PermissionToCheck)
+        {
+            return (Current & PermissionToCheck) == PermissionToCheck;
         }
         #endregion
 
@@ -1494,7 +1527,7 @@ namespace Demo01
         Asyut = 254,
         banha = 255,
         //Suize  => not valid [is too large to fit it's datatype]
-    } 
+    }
     #endregion
 
     #region Ex: Enum + Params
