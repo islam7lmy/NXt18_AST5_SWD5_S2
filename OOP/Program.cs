@@ -54,11 +54,51 @@ namespace OOP
             //Console.WriteLine(p1.y); 
             #endregion
             #region Ex 02: Employee
-            Employee emp = new Employee();
-            emp.Salary = 10000000;
+            //Employee emp = new Employee(20);
+            ////emp.Name = "ahmed mohmed ahmed ibrahem";
+            //emp.SetName("ahmed mohmed ahmed ibrahem");
+            //Console.WriteLine(emp.GetName());
 
+
+
+            //emp.Salary = 10000000;
+            //emp.Salary = 0; //2000
+            ////emp.setsalary(10);
+            ////Console.WriteLine(emp.getsalary());
+
+            ////emp.SalaryProperty = 10;
+            ////Console.WriteLine(emp.SalaryProperty);
+
+            ////emp.Age = 30;
+            //Console.WriteLine($"Age : {emp.Age}");
+
+            ////Console.WriteLine(emp.Deductions());
+
+            //Console.WriteLine(emp.Deductions);
+            #endregion
+            #region Ex 03 : PhoneBook
+            //name => number
+            PhoneBook book = new PhoneBook(0);
+
+            //Console.WriteLine(book.numbers[0]);
+            //Console.WriteLine(book.numbers.Length);
+
+            //book.numbers = new string[100];
+
+            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            book.AddContact("ahmed", "01234567891", 0);
+            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            //book.RemoveContact("ahmed");
+            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            
+            //book.SetNumber("ahmed", "01248957524");
+            //Console.WriteLine(book.GetNumber("ahmed"));
+
+
+            book["ahmed"] = "01248957524";
+            Console.WriteLine(book["ahmed"]);  
             #endregion
             #endregion
         }
-    }
+    } 
 }
