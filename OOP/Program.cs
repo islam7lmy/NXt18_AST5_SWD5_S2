@@ -78,25 +78,78 @@ namespace OOP
             #endregion
             #region Ex 03 : PhoneBook
             //name => number
-            PhoneBook book = new PhoneBook(0);
+            //PhoneBook book = new PhoneBook(0);
 
-            //Console.WriteLine(book.numbers[0]);
-            //Console.WriteLine(book.numbers.Length);
+            ////Console.WriteLine(book.numbers[0]);
+            ////Console.WriteLine(book.numbers.Length);
 
-            //book.numbers = new string[100];
+            ////book.numbers = new string[100];
 
-            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
-            book.AddContact("ahmed", "01234567891", 0);
-            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
-            //book.RemoveContact("ahmed");
-            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            ////book.AddContact("ahmed", "01234567891", 0);
+            //book.AddContact("ahmed", "01234567891");
+            //book.AddContact("ibrahem", "01234567892");
+            //book.AddContact("omr", "01234567893");
+            //book.AddContact("ali", "01234567894");
+            //book.AddContact("ali", "01234567894");
+            //book.AddContact("ali", "01234567894");
+            //book.AddContact("ali", "01234567894");
+            //book.AddContact("ali", "01234567894");
+            //book.AddContact("ali", "01234567894");
+            //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            ////book.RemoveContact("ahmed");
+            //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+
+            ////book.SetNumber("ahmed", "01248957524");
+            ////Console.WriteLine(book.GetNumber("ahmed"));
+
+
+            //book["ahmed"] = "01248957524";
+            //Console.WriteLine(book["ahmed"]);
+
+
+            //for (int i = 0; i < book.Count; i++)
+            //{
+            //    Console.WriteLine(book[i]);
+            //   // Console.WriteLine($"{book.name[i]} => {book.number[i]}");
+            //}
+            #endregion
+            #endregion
+
+            #region Class
+            #region Ex : Car
+            //Car c1;
+            //declare reference of type car refer to null
+            //allocate 4 bytes uninsitlized in stack
+            //zero bytes will be allocate in heab
+            //Console.WriteLine(c1); 
+
+            //c1.Id = 1;
+            //c1.Model = "BMW";
+            //c1.Speed = 220;
+
+            //c1 = new Car();
+            //c1 = new Car(10);
+            //c1 = new Car(10,"BMW");
+            //c1 = new Car(10,"BMW",220);
+
+            //c1.Id = 20;
+            //c1.Model = "BYD";
+            //c1.Speed = 320;
+
+
+            //Point p1;
+            ////allocate 8 bytes uninsitlized in stack [x 4byte , y 4byte]
+            ////Console.WriteLine(p1);
+
+            ////p1.x = 10;
+            ////p1.y = 20;
+            ////Console.WriteLine(p1);
+
+            //p1 = new Point(); 
+            #endregion
+            #region Inhertance
             
-            //book.SetNumber("ahmed", "01248957524");
-            //Console.WriteLine(book.GetNumber("ahmed"));
-
-
-            book["ahmed"] = "01248957524";
-            Console.WriteLine(book["ahmed"]);  
             #endregion
             #endregion
         }
