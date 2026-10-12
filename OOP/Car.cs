@@ -25,14 +25,37 @@ namespace OOP
         //    set { _model = value.Length <=20 ? value : value.Substring(0,20); }
         //}
 
-        //public Car()
-        //{
-            
-        //}
-        public Car(int _id,string _name,int _speed)
+
+        public Car(int _id, string _model, int _speed)
         {
-                
+            Id = _id;
+            Model = _model;
+            Speed = _speed;
+            Console.WriteLine("Ctor 04");
         }
 
+        public Car(int _id, string _model) : this(_id,_model,320)
+        {
+            //Id = _id;
+            //Model = _model;
+            //Speed = 320;
+            Console.WriteLine("Ctor 03");
+        }
+
+        public Car(int _id) : this(_id , "BMW")
+        {
+            //Id = _id;
+            //Model = "BMW";
+            //Speed = 320;
+            Console.WriteLine("Ctor 02");
+        }
+
+        public Car() : this(10)
+        {
+            //Id = 10;
+            //Model = "BMW";
+            //Speed = 320;
+            Console.WriteLine("Ctor 01");
+        }
     }
 }

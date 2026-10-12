@@ -1,4 +1,5 @@
 ﻿using Commen;
+using OOP.Inhertiance;
 using System;
 
 namespace OOP
@@ -149,9 +150,110 @@ namespace OOP
             //p1 = new Point(); 
             #endregion
             #region Inhertance
-            
+            //Parent p = new Parent(10);
+            //p.MyFunc01();
+            //p.MyFunc02();
             #endregion
+            #region Class Vs Struct
+            //Car c1 = new Car();
+            //Car c2 = c1; // Shallow copy => copy just reference 
+            //c2.Id = 99;
+            //Console.WriteLine(c1.Id); // 99 because c1 and c2 refer to the same object in heab
+            ///Reference Type => stored refernece in stack and object in heab
+            ///instiliztion => must call constructor
+            ///clr will always generate empty parameterless constructor ,if no user-defined constructor exists 
+            ///clr will no longer generate empty parameterless constructor, if u write user-defined constructor
+            ///default constructor => do nothing 
+            ///Supports inheritance => [all access modifers]
+            ///used for complex objects and behaviors
+
+
+            //Point P1 = new Point();
+            //Point P2 = P1; // deep copy => p2 is a copy of p1 but refer to different memory address
+            //P2.x = 10;
+            //P2.y = 10;
+            //P2.x = 99;
+            //Console.WriteLine(P1.x); // 0 
+            ///Vlaue Type => stored in stack
+            ///instiliztion => mustnot call constructor
+            ///clr will always Generate Parameterless Constructor
+            ///default constructor => initialize the attributes of struct with their default values
+            ///Cannot inherit from another struct =>  [private, internal, public]
+            ///often used for small and simple data => recomanded 16 bytes or less
+            #endregion
+
+            //PhoneBook book = new PhoneBook();
+            //book.AddContact("ahmed", "0123456789");
+            //book.AddContact("ali", "0123456788");
+            //book.AddContact("omr", "0123456787");
+
+            //PhoneBook book01 = book;
+            //book01["ahmed"] = "00000000000000";
+
+            ////book01 = new PhoneBook();
+            //book01.names = new string[10];
+            //book01.numbers = new string[10];
+
+            //Console.WriteLine(book["ahmed"]);
+            //Console.WriteLine(book01["ahmed"]);
+            #endregion
+
+            #region PolyMophism
+            #region OverLoading
+            //int num1 = 10, num2 = 20;
+            //Sum(num1, num2);
+
+            //double num03 = 10.5, num04 = 15.5;
+            //Sum(num03, num04);
+
+            //int x = 10;
+            //x.ToString(); //=> has 4 overloading
+            #endregion
+            #region OverRiding
+
+            #endregion
+            #endregion
+
+            #region Binding
+
+            #endregion
+
+            #region Interfaces
+
             #endregion
         }
-    } 
+
+        #region PolyMorphism 1. function overloading
+        ///1. datatype of parameters
+        ///2. count number of parameters
+        ///3. reorder parameters if not same datatype
+
+        public static int Sum(int x, int y)
+        {
+            return x + y;
+        }
+        public static double Sum(double x, double y)
+        {
+            return x + y;
+        }
+
+        public static double Sum(double x, double y, double z)
+        {
+            return x + y;
+        }
+
+        public static int Sum(int x, short y)
+        {
+            return x + y;
+        }
+        //public static double Sum(int x, short y) //not overloading
+        //{
+        //    return x + y;
+        //}
+        public static int Sum(short y, int x)
+        {
+            return x + y;
+        }
+        #endregion
+    }
 }
