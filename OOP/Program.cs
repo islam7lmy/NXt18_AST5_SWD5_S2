@@ -1,5 +1,6 @@
-﻿using Commen;
+﻿//using Commen;
 using OOP.Inhertiance;
+using OOP.PolyMorphism_OverRiding;
 using System;
 
 namespace OOP
@@ -210,12 +211,122 @@ namespace OOP
             //x.ToString(); //=> has 4 overloading
             #endregion
             #region OverRiding
+            //Commen.TypeA typeA = new Commen.TypeA();
+            //PolyMorphism_OverRiding.TypeA A = new PolyMorphism_OverRiding.TypeA();
 
+            //TypeA typeA = new TypeA(10);
+            //typeA.MyFun01();
+            //typeA.MyFun02();
+
+
+            //TypeB typeB = new TypeB(10, 20);
+            //typeB.MyFun01();
+            //typeB.MyFun02();
             #endregion
             #endregion
 
             #region Binding
+            //PolyMorphism_OverRiding.Employee emp;
+            ///// allocate 4 byte for reference from type employee in stack refer to null
 
+            //emp = new PolyMorphism_OverRiding.Employee();
+            /// allocate object in heap
+
+            #region What is Binding
+            /// reference from base type => object from derived type
+
+            //PolyMorphism_OverRiding.Employee emp01;
+
+            //emp01 = new FullTimeEmployee(); //binding
+
+            //emp01.Id = 10;
+            //emp01.Name = "ahmed";
+            //emp01.Age = 30;
+            ////emp01.Salary = 10; //not valid
+
+            //emp01.ShowRole(); //hiding  => static => will run ralted to reference 
+            //emp01.PrintDetails(); // overriding => dynamic => will run ralted to object 
+
+
+
+            //emp01 = new PartTimeEmployee();
+            //emp01.Id = 10;
+            //emp01.Name = "ahmed";
+            //emp01.Age = 30;
+            ////emp01.HourRate = 10; //not Valid
+            ////emp01.CountOfHour = 20; //not valid
+
+            //emp01.ShowRole();
+            //emp01.PrintDetails();
+
+
+
+            //emp01 = new FreeLanceEmployee();
+            //emp01.Id = 10;
+            //emp01.Name = "ahmed";
+            //emp01.Age = 30;
+            ////emp01.ProjectPrice = 1000; //invalid
+
+            //emp01.ShowRole();
+            //emp01.PrintDetails();
+
+            #endregion
+
+            #region Not binding
+            //FullTimeEmployee emp = (FullTimeEmployee)new PolyMorphism_OverRiding.Employee(); //not binding
+
+            ///animal = dog 
+            ///animal = cat 
+            ///dog = (dog) animal 
+            #endregion
+
+            #region why Binding
+            ///class member method to process employees with all types 
+            //FullTimeEmployee fullTime = new FullTimeEmployee();
+            //PartTimeEmployee partTime = new PartTimeEmployee();
+            //FreeLanceEmployee freeLance = new FreeLanceEmployee();
+            //DayFullTimeEmployee dayFullTimeEmployee = new DayFullTimeEmployee();
+            //NightFullTimeEmployee nightFullTimeEmployee = new NightFullTimeEmployee();
+
+            //ProcessEmployee(fullTime);
+            //ProcessEmployee(partTime);
+            //ProcessEmployee(freeLance);
+            //ProcessEmployee(dayFullTimeEmployee);
+            //ProcessEmployee(nightFullTimeEmployee);
+
+            #endregion
+
+            #region More Practise on Binding
+            TypeA typeA = new TypeC(1, 2, 3);
+            typeA.A = 11;
+            //typeA.B = 10;
+            //typeA.C = 20;
+
+            typeA.MyFun01(); //typeA
+            typeA.MyFun02(); //typeC 
+
+            TypeB typeB = new TypeC(1, 2, 3);
+            typeB.A = 11;
+            typeB.B = 10;
+            //typeA.C = 20;
+
+            typeB.MyFun01(); //typeB
+            typeB.MyFun02(); //typeC
+
+            TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
+            TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
+            TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
+            TypeD typeD1 = new TypeD(1, 2, 3, 4);
+            TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+
+            typeA1.MyFun02(); //
+            typeB1.MyFun02(); //
+            typeC1.MyFun02(); //
+            typeD1.MyFun02(); //
+            typeD2.MyFun02(); //
+
+
+            #endregion
             #endregion
 
             #region Interfaces
@@ -254,6 +365,44 @@ namespace OOP
         {
             return x + y;
         }
+        #endregion
+
+        #region Binding
+        public static void ProcessEmployee(PolyMorphism_OverRiding.Employee emp)
+        {
+            if (emp is not null)
+            {
+                emp.ShowRole();
+                emp.PrintDetails();
+            }
+        }
+
+        //public static void ProcessEmployee(FullTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetails();
+        //    }
+        //}
+
+        //public static void ProcessEmployee(PartTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetails();
+        //    }
+        //}
+
+        //public static void ProcessEmployee(FreeLanceEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetails();
+        //    }
+        //}
         #endregion
     }
 }
