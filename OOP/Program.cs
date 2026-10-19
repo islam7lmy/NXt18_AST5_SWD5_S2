@@ -1,5 +1,6 @@
 ﻿//using Commen;
 using OOP.Inhertiance;
+using OOP.InterFaces;
 using OOP.PolyMorphism_OverRiding;
 using System;
 
@@ -297,40 +298,130 @@ namespace OOP
             #endregion
 
             #region More Practise on Binding
-            TypeA typeA = new TypeC(1, 2, 3);
-            typeA.A = 11;
-            //typeA.B = 10;
-            //typeA.C = 20;
+            //TypeA typeA = new TypeC(1, 2, 3);
+            //typeA.A = 11;
+            ////typeA.B = 10;
+            ////typeA.C = 20;
 
-            typeA.MyFun01(); //typeA
-            typeA.MyFun02(); //typeC 
+            //typeA.MyFun01(); //typeA
+            //typeA.MyFun02(); //typeC 
 
-            TypeB typeB = new TypeC(1, 2, 3);
-            typeB.A = 11;
-            typeB.B = 10;
-            //typeA.C = 20;
+            //TypeB typeB = new TypeC(1, 2, 3);
+            //typeB.A = 11;
+            //typeB.B = 10;
+            ////typeA.C = 20;
 
-            typeB.MyFun01(); //typeB
-            typeB.MyFun02(); //typeC
+            //typeB.MyFun01(); //typeB
+            //typeB.MyFun02(); //typeC
 
-            TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
-            TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
-            TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
-            TypeD typeD1 = new TypeD(1, 2, 3, 4);
-            TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+            //TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD1 = new TypeD(1, 2, 3, 4);
+            //TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD3 = new TypeF(1, 2, 3, 4, 5);
 
-            typeA1.MyFun02(); //
-            typeB1.MyFun02(); //
-            typeC1.MyFun02(); //
-            typeD1.MyFun02(); //
-            typeD2.MyFun02(); //
+            //typeA1.MyFun02(); //typeC
+            //typeB1.MyFun02(); //typeC
+            //typeC1.MyFun02(); //typeC
+            //typeD1.MyFun02(); //typeD
+            //typeD2.MyFun02(); //typeE
+            //typeD3.MyFun02(); //
 
 
             #endregion
             #endregion
 
             #region Interfaces
+            #region Ex01
+            //IMytype mytype = new IMytype();//not valid
 
+            //IMytype mytype = new MyType();
+            //mytype.Salary = 20;
+            //mytype.Myfun();
+            //mytype.Print();
+
+            //MyType myType02 = new MyType();
+            //myType02.Salary = 20;
+            //myType02.Myfun();
+            //myType02.Print(); //not valid 
+            #endregion
+            #region Ex02
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //Print10NumbersFromSeries(seriesByTwo);
+
+            //SeriesByThree seriesByThree = new SeriesByThree();
+            //Print10NumbersFromSeries(seriesByThree);
+            #endregion
+            #region Implment Interface Implicitly Vs Implment Interface Explicitly
+            //InterFaces.Car car = new InterFaces.Car();
+            //car.Speed = 20;
+            //car.Backward();
+            //car.Forward();
+            //car.Left();
+            //car.Right();
+
+
+            //AirPlan airPlan = new AirPlan();
+            //airPlan.Speed = 20;
+            //not valid => because it's explicit implmintation
+            //airPlan.Backward();
+            //airPlan.Forward();
+            //airPlan.Left();
+            //airPlan.Right(); 
+
+            //IMoveable moveablePlan = airPlan;
+            //moveablePlan.Speed = 100;
+            //moveablePlan.Backward();
+            //moveablePlan.Forward();
+            //moveablePlan.Left();
+            //moveablePlan.Right();
+
+            //IFlyable flyablePlan = airPlan;
+            //flyablePlan.Speed = 500; // => implicit implmentation
+            //flyablePlan.Backward();
+            //flyablePlan.Forward();
+            //flyablePlan.Left();
+            //flyablePlan.Right();
+            #endregion
+            #region Shallow Copy Vs Deep Copy
+            //int x = 10;
+            //int y = 20;
+            //y = x;
+            //y = 30;
+            //Console.WriteLine(x);
+            //Console.WriteLine(y);
+
+            int[] Arr01 = { 1, 2, 3 };
+            int[] Arr02 = { 4, 5, 6 };
+
+            Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+
+            #region Shallow Copy
+            //Arr02 = Arr01;
+
+            //Console.WriteLine("after Shallow copy");
+
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+
+            //Arr02[0] = 99;
+            //Console.WriteLine(Arr01[0]);
+            #endregion
+
+            #region Deep Copy
+            ////int[] test = (int[]) new object(); 
+            //Arr02 = (int[]) Arr01.Clone();
+            //Console.WriteLine("after Deep copy");
+
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+
+            //Arr02[0] = 99;
+            //Console.WriteLine(Arr01[0]);
+            #endregion
+            #endregion
             #endregion
         }
 
@@ -402,6 +493,41 @@ namespace OOP
         //        emp.ShowRole();
         //        emp.PrintDetails();
         //    }
+        //}
+        #endregion
+
+        #region Interfaces
+        public static void Print10NumbersFromSeries(ISeries series)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write(series.Current);
+                Console.Write("\t");
+                series.GetNext();
+            }
+            Console.WriteLine();
+            series.Reset();
+            Console.WriteLine(series.Current);
+        }
+
+        //public static void Print10NumbersFromSeries(SeriesByTwo series)
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        Console.WriteLine(series.Current);
+        //        series.GetNext();
+        //    }
+        //    series.Reset();
+        //}
+
+        //public static void Print10NumbersFromSeries(SeriesByThree series)
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        Console.WriteLine(series.Current);
+        //        series.GetNext();
+        //    }
+        //    series.Reset();
         //}
         #endregion
     }

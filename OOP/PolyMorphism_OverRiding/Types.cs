@@ -55,7 +55,7 @@ namespace OOP.PolyMorphism_OverRiding
     class TypeC : TypeB
     {
         public int C { get; set; }
-        public TypeC(int _a, int _b , int _c) : base(_a , _b)
+        public TypeC(int _a, int _b, int _c) : base(_a, _b)
         {
             C = _c;
         }
@@ -74,14 +74,14 @@ namespace OOP.PolyMorphism_OverRiding
     class TypeD : TypeC
     {
         public int D { get; set; }
-        public TypeD(int _a, int _b, int _c , int _d) : base(_a, _b , _c)
+        public TypeD(int _a, int _b, int _c, int _d) : base(_a, _b, _c)
         {
             D = _d;
         }
 
         public new virtual void MyFun02()
         {
-            Console.WriteLine($"TypeC : A = {A} , B = {B} , C = {C} , D = {D} ");
+            Console.WriteLine($"TypeD : A = {A} , B = {B} , C = {C} , D = {D} ");
         }
     }
 
@@ -94,9 +94,18 @@ namespace OOP.PolyMorphism_OverRiding
         }
         public override void MyFun02()
         {
-            Console.WriteLine($"TypeC : A = {A} , B = {B} , C = {C} , D = {D} , E = {E}");
+            Console.WriteLine($"TypeE : A = {A} , B = {B} , C = {C} , D = {D} , E = {E}");
         }
 
+    }
+
+    class TypeF : TypeD
+    {
+        public int F { get; set; }
+        public TypeF(int _a, int _b, int _c, int _d, int _f) : base(_a, _b, _c, _d)
+        {
+            F = _f;
+        }
     }
 
 }
