@@ -1,4 +1,7 @@
 ﻿//using Commen;
+using Microsoft.VisualBasic;
+using OOP.Abstraction;
+using OOP.Abstraction02;
 using OOP.Inhertiance;
 using OOP.InterFaces;
 using OOP.PolyMorphism_OverRiding;
@@ -327,8 +330,6 @@ namespace OOP
             //typeD1.MyFun02(); //typeD
             //typeD2.MyFun02(); //typeE
             //typeD3.MyFun02(); //
-
-
             #endregion
             #endregion
 
@@ -392,11 +393,11 @@ namespace OOP
             //Console.WriteLine(x);
             //Console.WriteLine(y);
 
-            int[] Arr01 = { 1, 2, 3 };
-            int[] Arr02 = { 4, 5, 6 };
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
 
-            Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
-            Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
 
             #region Shallow Copy
             //Arr02 = Arr01;
@@ -422,7 +423,127 @@ namespace OOP
             //Console.WriteLine(Arr01[0]);
             #endregion
             #endregion
+            #region Built-In Interface ICloneable
+            //OOP.InterFaces.Employee emp01 = new InterFaces.Employee();
+            //emp01.Id = 20;
+            //emp01.Name = "ahmed";
+            //emp01.Address = "cairo";
+            //emp01.Salary = 10000;
+
+
+            //OOP.InterFaces.Employee emp02 = new InterFaces.Employee()
+            //{
+            //    Id = 20,
+            //    Name = "Ahmed",
+            //    Address = "Cairo",
+            //    Salary = 10000,
+            //};
+
+            //Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"emp02 : {emp02.GetHashCode()}");
+
+            #region Shallow
+            //emp02 = emp01;
+            //Console.WriteLine("After shallow");
+            //Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"emp02 : {emp02.GetHashCode()}");
             #endregion
+
+            #region Deep
+            //OOP.InterFaces.Employee emp03 = new OOP.InterFaces.Employee(emp01);
+
+            //emp02 = OOP.InterFaces.Employee.DeepCopy(emp01);
+            //emp01.Id = 100;
+            //emp02 =(OOP.InterFaces.Employee) emp01.Clone();
+            //Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"emp02 : {emp02.GetHashCode()}");
+            //#endregion
+            //Console.WriteLine(emp01.ToString());
+            //Console.WriteLine(emp02.ToString());
+            #endregion
+
+            #endregion
+            #region Built-In Interface IComparable
+            //int[] arr = { 9, 8, 11, 7, 2, 3, 4, 5, 1 };
+            ////Array.Sort(arr);
+            //foreach (int i in arr)
+            //{
+            //    Console.Write($"{i} \t");
+            //}
+            //Console.WriteLine();
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    for (int j = 0; j < arr.Length - i - 1; j++)
+            //    {
+            //        if (arr[j].CompareTo(arr[j + 1]) > 0)
+            //        {
+            //            Swap(ref arr[j], ref arr[j + 1]);
+            //        }
+
+            //    }
+            //}
+            //foreach (int i in arr)
+            //{
+            //    Console.Write($"{i} \t");
+            //}
+            //Console.WriteLine();
+
+
+            //string[] strings = { "omr", "Ahmed", "Ali", };
+            //Array.Sort(strings);
+            //for (int i = 0; i < strings.Length; i++)
+            //{
+            //    for (int j = 0; j < strings.Length - i - 1; j++)
+            //    {
+            //        if (strings[j].CompareTo(strings[j + 1]) > 0)
+            //        {
+            //            Swap(ref strings[j], ref strings[j + 1]);
+            //        }
+
+            //    }
+            //}
+
+            //InterFaces.Employee[] employees =
+            //{
+            //    new InterFaces.Employee() { Id = 10 , Name = "Ahmed" , Address = "Cairo", Salary = 10_000},
+            //    new InterFaces.Employee() { Id = 20 , Name = "Ali" , Address = "Alex", Salary = 4_000},
+            //    new InterFaces.Employee() { Id = 30 , Name = "Omar" , Address = "Asyut", Salary = 8_000},
+            //    new InterFaces.Employee() { Id = 40 , Name = "Amr" , Address = "Fayoum", Salary = 5_000},
+            //};
+
+            //Array.Sort(employees);
+            ////for (int i = 0; i < employees.Length; i++)
+            ////{
+            ////    for (int j = 0; j < employees.Length - i - 1; j++)
+            ////    {
+            ////        if (employees[j].CompareTo(employees[j + 1]) > 0)
+            ////        {
+            ////            Swap(ref employees[j], ref employees[j + 1]);
+            ////        }
+
+            ////    }
+            ////}
+
+
+            //foreach (InterFaces.Employee emp in employees)
+            //{
+            //    Console.WriteLine(emp.ToString());
+            //}
+            #endregion
+            #endregion
+
+            #region Abstraction
+            //Shape s = new Shape(); //not valid
+            //Shape squ = new Squere();
+            //squ.Dim01 = 10;
+            //Console.WriteLine(squ.Perimeter);
+            //Console.WriteLine(squ.Area);
+            //squ.test();
+
+            //OOP.Abstraction02.Squere sq = new OOP.Abstraction02.Squere(10);
+            //IShape ss = new OOP.Abstraction02.Squere(10);
+            #endregion
+
         }
 
         #region PolyMorphism 1. function overloading
@@ -529,6 +650,53 @@ namespace OOP
         //    }
         //    series.Reset();
         //}
+
+        public static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+        public static void Swap(ref string a, ref string b)
+        {
+            string temp = a;
+            a = b;
+            b = temp;
+        }
+        public static void Swap(ref InterFaces.Employee a, ref InterFaces.Employee b)
+        {
+            InterFaces.Employee temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref object a, ref object b)
+        {
+            object temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref IComparable a, ref IComparable b)
+        {
+            IComparable temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Sorting(IComparable[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j].CompareTo(arr[j + 1]) > 0)
+                    {
+                        Swap(ref arr[j], ref arr[j + 1]);
+                    }
+                }
+            }
+        }
         #endregion
     }
 }
