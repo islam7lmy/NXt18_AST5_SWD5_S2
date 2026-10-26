@@ -1,9 +1,11 @@
 ﻿//using Commen;
+using Commen;
 using Microsoft.VisualBasic;
 using OOP.Abstraction;
 using OOP.Abstraction02;
 using OOP.Inhertiance;
 using OOP.InterFaces;
+using OOP.OperatorOverLoading;
 using OOP.PolyMorphism_OverRiding;
 using System;
 
@@ -348,11 +350,20 @@ namespace OOP
             //myType02.Print(); //not valid 
             #endregion
             #region Ex02
-            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            ///SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //Console.WriteLine(seriesByTwo.Current);
+            //seriesByTwo.Current = 20;
+
             //Print10NumbersFromSeries(seriesByTwo);
 
             //SeriesByThree seriesByThree = new SeriesByThree();
             //Print10NumbersFromSeries(seriesByThree);
+
+            //SeriesBySeven seriesBySeven = new SeriesBySeven();
+            //Print10NumbersFromSeries(seriesBySeven);
+
+            //SeriesByFive seriesByFive = new SeriesByFive();
+            //seriesByFive.Current = 100;
             #endregion
             #region Implment Interface Implicitly Vs Implment Interface Explicitly
             //InterFaces.Car car = new InterFaces.Car();
@@ -544,6 +555,24 @@ namespace OOP
             //IShape ss = new OOP.Abstraction02.Squere(10);
             #endregion
 
+            #region operator overLoading
+            //5 + 7i => complex
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(3, 4);
+            //Complex c3 = new Complex(5, 6);
+            //Complex c5 = default;
+
+            //Complex c4 = c1 + c2 + c3 + c5;
+            //Console.WriteLine(c4);
+
+            //Console.WriteLine(c1++); //print => 1+2i then value => 2+3i
+            //Console.WriteLine(++c1); //value => 3+4i then print => 3+4i
+            //Console.WriteLine(c1--); //print => 3+4i then value => 2+3i
+            //Console.WriteLine(--c1); //value => 1+2i then print => 1+2i
+            //Console.WriteLine(c1);   //print => 1+2i
+
+            #endregion
+
         }
 
         #region PolyMorphism 1. function overloading
@@ -622,6 +651,7 @@ namespace OOP
         {
             for (int i = 0; i < 10; i++)
             {
+                //series.Current = 20; //not valid outer class
                 Console.Write(series.Current);
                 Console.Write("\t");
                 series.GetNext();

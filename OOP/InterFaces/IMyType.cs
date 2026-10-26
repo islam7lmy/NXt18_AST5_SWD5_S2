@@ -32,7 +32,7 @@ namespace OOP.InterFaces
         }
     }
 
-    internal class IMyType : IMytype //=> implementation
+    internal class MyType : IMytype //=> implementation
     {
         //clr will generate backing field
         //public int Salary { get; set; }
