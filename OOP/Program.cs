@@ -7,6 +7,8 @@ using OOP.Inhertiance;
 using OOP.InterFaces;
 using OOP.OperatorOverLoading;
 using OOP.PolyMorphism_OverRiding;
+using OOP.Sealed;
+using OOP.Static;
 using System;
 
 namespace OOP
@@ -571,7 +573,123 @@ namespace OOP
             //Console.WriteLine(--c1); //value => 1+2i then print => 1+2i
             //Console.WriteLine(c1);   //print => 1+2i
 
+            #region Equals and GetHashcode
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(1, 2);
+
+            //Console.WriteLine(c1.GetHashCode());
+            //Console.WriteLine(c2.GetHashCode());
+
+            //default => compare hashcode == hashcode
+            //if(c1 == c2)  
+            //    Console.WriteLine("Equals");
+            //else
+            //    Console.WriteLine("Not Equals");
+
+            //if (c1.Equals(c2))
+            //    Console.WriteLine("Equals");
+            //else
+            //    Console.WriteLine("Not Equals");
+
+            /////obj1.equals(obj2) == true
+            /////obj1.gethashcode == obj1.gethashcode
+
+            //HashSet<Complex> complexes = new();
+            //complexes.Add(c1);
+            //complexes.Add(c2);
+
+            //Console.WriteLine(complexes.Count);
+
+            //string x = "ahmed";
+            //string y = "ahmed";
+
+            //if(x == y)
+            //    Console.WriteLine("equals");
+            //else
+            //    Console.WriteLine("Not equals");
+
+            //if(x.Equals(y))
+            //    Console.WriteLine("equals");
+            //else
+            //    Console.WriteLine("Not equals");
+
+            //Console.WriteLine(x.GetHashCode());
+            //Console.WriteLine(y.GetHashCode());
+
+            /// obj1.gethashcode == obj2.gethashcode => must not two obj is equal
+            /// obj1.equals(obj2) //may true may false
+
+
+            /// obj1.equals(obj2) //true
+            /// obj1.gethashcode == obj2.gethashcode //true
+
+            /// obj1.gethashcode == obj2.gethashcode //flase
+            /// obj1.equals(obj2) //false  
             #endregion
+
+            #endregion
+
+            #region User-Defined Casting Operator
+            //int x = 5;
+            //double y = 10.25;
+            //y = x; //implicit casting
+            //x = (int)y; //explicit cast [unsafe]
+
+            //x.Add(2);
+            //Extintions.Add(x, 2);
+            //int oooo = 50;
+            //oooo.Add(10);
+
+
+
+            //OperatorOverLoading.Employee emp = new OperatorOverLoading.Employee()
+            //{
+            //    Id = 102030,
+            //    FirstName = "Ahmed",
+            //    LastName = "Mohmed",
+            //    BirthDate = new DateOnly(2000, 03, 15),
+            //    Salary = 3_000,
+            //    Address = new Address() { AddressDetails = "el galaa street", City = "Cairo", Country = "Egypt" }
+            //};
+
+            //EmployeeViewModel empview = new EmployeeViewModel()
+            //{
+            //    FullName = $"{emp.FirstName} {emp.LastName}",
+            //    Age = DateTime.Now.Year - emp.BirthDate.Year,
+            //    Address = $"{emp.Address.AddressDetails}, {emp.Address.City}, {emp.Address.Country}",
+            //    NetSalary = emp.Salary - emp.Detuctions
+            //};
+
+
+            //EmployeeViewModel empview = new EmployeeViewModel(emp);
+
+            //EmployeeViewModel empview = emp; //implicit cast not recommended
+
+            //EmployeeViewModel empview = (EmployeeViewModel) emp; //explicit cast
+
+            //EmployeeViewModel empview = emp.ToEmployeeViewModel();
+
+            //EmployeeViewModel empview01 = EmployeeExtintions.ToEmployeeViewModel(emp);
+
+            //Console.WriteLine(empview);
+
+            #endregion
+
+            #region Static
+            ////Utility.PI = 3.14;
+            //Console.WriteLine(Utility.calcCircleArea(10));
+            #endregion
+
+            #region Sealed
+            //GrandChild grandChild = new GrandChild();
+            //grandChild.Salary = 1515;
+            //grandChild.Print();
+            #endregion
+
+            ///genircs
+            ///delegate
+            ///event
+            ///EF
 
         }
 

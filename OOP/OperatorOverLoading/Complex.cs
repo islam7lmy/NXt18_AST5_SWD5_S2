@@ -27,6 +27,8 @@ namespace OOP.OperatorOverLoading
             return $"{Real} + {Imag}i";
         }
 
+        
+
         ///operator overloading
         public static Complex operator +(Complex a, Complex b)
         {
@@ -100,6 +102,24 @@ namespace OOP.OperatorOverLoading
         public static bool operator !=(Complex a, Complex b)
         {
             return !(a == b);
+        }
+
+        public override bool Equals(object? obj)
+        {
+
+            //Complex complex = (complex)obj;
+            //if((this?.Real ?? 0) == (complex?.Real ?? 0))
+            //    return (this?.Imag ?? 0) == (complex?.Imag ?? 0)
+            //return false;
+
+            return obj is Complex complex &&
+                   Real == complex.Real &&
+                   Imag == complex.Imag;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Real, Imag);
         }
     }
 }
