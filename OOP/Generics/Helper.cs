@@ -194,4 +194,39 @@ namespace OOP.Generics
 
 
     #endregion
+
+    #region Quiz
+    public interface IPrintable
+    {
+        void Print();
+    }
+
+    public class Student : IPrintable
+    {
+        public string Name { get; set; }
+
+        public Student()
+        {
+            Name = "Unknown";
+        }
+
+        public void Print()
+        {
+            Console.WriteLine($"Student: {Name}");
+        }
+    }
+
+    public class DataProcessor<T>
+        where T : IPrintable, new()
+    {
+        public void Process(T item)
+        {
+            item.Print();
+
+            T newItem = new T();
+
+            newItem.Print();
+        }
+    }
+    #endregion
 }

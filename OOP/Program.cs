@@ -3,6 +3,7 @@ using Commen;
 using Microsoft.VisualBasic;
 using OOP.Abstraction;
 using OOP.Abstraction02;
+using OOP.Delegates;
 using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.InterFaces;
@@ -11,13 +12,24 @@ using OOP.PolyMorphism_OverRiding;
 using OOP.Sealed;
 using OOP.Static;
 using System;
+using System.Collections;
 
 namespace OOP
 {
+    //new Delegate (Class), the reference from this Delegate Can refer to a function or more than function [pointer to function]
+    //these function may be class-member function [static] or object-member function [non-static]
+    //but these function must have the same signature of delegate
+    //regardless function access modifier regardless naming(Return type, parameters)
+    //ref from delegate have object of delegate that has target and this target has function 
+
+    //step 0. Delegate Declare
+    public delegate int StringFuncDelegate(string str);
+
     internal class Program
     {
         static void Main(string[] args)
         {
+            #region OOP
             #region Access Modifiers
             ///1. private:
             ///2. private protected => inhertance
@@ -774,6 +786,7 @@ namespace OOP
             //Repository<int> numberrepo = new Repository<int>();
             #endregion
 
+
             ///DataProcessor<T>
             ///تستقبل أي Object من نوع T
             ///تنشئ Object جديد من نفس النوع.
@@ -781,14 +794,147 @@ namespace OOP
             ///تتأكد إن الـ Type بيطبق Interface اسمها IPrintable.
             ///تشترط وجود Parameterless Constructor.
 
-
+            //DataProcessor<Student> processor = new();
+            //Student student = new Student();
+            //processor.Process(student);
 
 
             #endregion
+            #endregion
 
 
+            #region Delegate
+            #region Ex:01
+            ////Delegate Is a C# Language Feature
+            ////has 2 Usages:-
+            //// 1. functional programming [stratigay design pattern] => (pass function as parameter, return function, can save function into variable[address of function])
+            //// 2. Event-Driven Programming [observer design pattern]
 
-            ///delegate
+            ////step 1. Declare ref From Delegate
+            //StringFuncDelegate reference;
+
+            ////step 2. intial the delegate reference [pointer of function]
+            ////reference = new StringFuncDelegate(StringFunction.GetCountOfUpperCaseChar);
+            //reference = StringFunction.GetCountOfUpperCaseChar;
+            //reference += StringFunction.GetCountOfUpperCaseChar;
+            //reference += StringFunction.GetCountOfLowerCaseChar;
+            //reference -= StringFunction.GetCountOfUpperCaseChar;
+
+
+            ////step 3. use the Delegate Reference
+            ////int res = reference.Invoke("Ahmed Ali");
+            //int res = reference("Ahmed Ali");
+
+            //Console.WriteLine(res); 
+            #endregion
+            #region Ex:02
+            //double[] numbers = { 8, 2, 7, 10, 7, 3, 5, 1, 4, 6 };
+            #region Without Delegates
+            //SortingAlgorithm.BubbleSort(numbers);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            //SortingAlgorithm.BubbleDescSort(numbers);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            #endregion
+            #region With Delegates
+            #region NonGenerics
+            //SortingAlgorithm.BubbleSortWithTypes(numbers, SortingType.SortAsc);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            //SortingAlgorithm.BubbleSortWithTypes(numbers, SortingType.SortDesc);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            #endregion
+            #region Generics
+            //string[] Names = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //SortingAlgorithm.BubbleSortWithTypes(Names, SortingType.SortDesc);
+            //foreach (var item in Names)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            #endregion
+            #endregion
+            #endregion
+            #region Ex:03
+            ////List<int> numbers = new List<int> { 7, 8, 10, 11, 12 };
+            ////ArrayList arrayList = new ArrayList { "ahmed", 15, 12.25 };
+
+            //List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            //List<int> OddNumbers = NumberFinding.FindNumbers(Numbers, (NumberFuncDelegate)NumberConditionFunctions.Odd);
+            //foreach (var item in OddNumbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            //List<int> EvenNumbers = NumberFinding.FindNumbers(Numbers, (NumberFuncDelegate)NumberConditionFunctions.Even); ;
+            //foreach (var item in EvenNumbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            //List<int> BySevenNumbers = NumberFinding.FindNumbers(Numbers, (NumberFuncDelegate)NumberConditionFunctions.BySeven);
+            //foreach (var item in BySevenNumbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine(); ;
+
+
+            //List<string> Names = new List<string>() { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //List<string> DelegateOddNumbers = NumberFinding.FindNumbers(Names, NumberConditionFunctions.CheckLength);
+
+
+            #endregion
+            #region BuiltIn Delegates [Predicate,func,action]
+            //delegete is c# language feature use to apply features in functional programing
+            //there are 3 built in delegete :
+
+            //1.Predicate  => takes one input parameter and returns a boolean - true or false.is a special kind of Func. It represents a method that contains a set of criteria mostly defined inside an if condition and checks whether the passed parameter meets those criteria or not.
+
+            //2.Action     => takes zero, one or more input parameters, but does not return anything.
+
+            //3.Func       => takes zero, one or more input parameters, and returns a value (with its out parameter)
+
+            #region Example - 01 => BuiltIn Predicate in NumberFinding Class 
+            //List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            //Predicate<int> numberfuncdelegate = NumberConditionFunctions.Odd;
+            //List<int> DelegateOddNumbers = NumberFinding.FindNumbers(Numbers, numberfuncdelegate);
+            #endregion
+            #region Example - 02 => BuiltIn Func in SortingAlgorithm Class
+            ////Func => ref must point on method take from zero to 16 parameter and must be return [Deleget Overloading]
+            //string[] Names = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //Func<string, string, bool> EnhanceGenericsReference = SortingType.SortAsc;
+            //SortingAlgorithm.BubbleSortWithTypes(Names, EnhanceGenericsReference);
+            #endregion
+            #region Example - 03 => BuiltIn Action
+            //Action => has two vergion 1.[none - generic] 2.[generic]
+            //ref must point on method take from zero to 16 parameter and dosen't return [Deleget Overloading] 
+            Action action;
+            action = SomeFunction.Print;
+            action();
+
+            Action<string> action01;
+            action01 = SomeFunction.Print;
+            action01("Ahmed");
+            #endregion
+            #endregion
+            #endregion
             ///event
             ///EF
 
