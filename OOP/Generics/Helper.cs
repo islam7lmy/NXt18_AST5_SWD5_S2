@@ -117,7 +117,7 @@ namespace OOP.Generics
         {
             T max = arr[0];
 
-            for (int i = 1; i < arr.Length; i++)
+            for (int i = 1; i < arr.Length; i++) 
             {
                 if (arr[i].CompareTo(max) > 0)
                     max = arr[i];
