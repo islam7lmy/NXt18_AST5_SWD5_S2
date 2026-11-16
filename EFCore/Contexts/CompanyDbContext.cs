@@ -20,6 +20,72 @@ namespace EFCore.Contexts
         }
 
         ///OnModelCreating => Models of database [tables]
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // when inhert from dbcontext contain dbsets as scurity modual has 7 dbsets
+            // inhert IdentityDbContext
+            //base.OnModelCreating(modelBuilder);
+
+            #region 3. Fluent API
+            #region Ways To Access Property
+            //modelBuilder.Entity<Employee>()
+            //    .Property("FirstName")
+            //    .HasDefaultValue("No Name");
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(nameof(Employee.FirstName))
+            //    .HasDefaultValue("No Name");
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(e => e.FirstName)
+            //    .HasDefaultValue("No Name");
+            #endregion
+            #region Shadow Property
+            modelBuilder.Entity<Employee>()
+                .Property<string>("Address")
+                .HasColumnType("nvarchar(100)");
+            #endregion
+            #region Mapping To Class
+            //modelBuilder.Entity<Department>()
+            //    .ToTable("DepartmentInfo", "dbo")
+            //    .HasKey(d => d.DeptId);
+
+            //modelBuilder.Entity<Department>()
+            //    .Property(d => d.DeptId)
+            //    .UseIdentityColumn(10, 10);
+
+            //modelBuilder.Entity<Department>()
+            //    .Property(d => d.Name)
+            //    .HasColumnName("DepartmentName")
+            //    .HasColumnType("nvarchar(50)")
+            //    .IsRequired();
+
+            //modelBuilder.Entity<Department>()
+            //    .Property(d => d.CreationDate)
+            //    .HasColumnType("date")
+            //    .HasComputedColumnSql("GETDATE()");
+
+            //efcore 3.1 new feature
+            modelBuilder.Entity<Department>(d =>
+            {
+                d.ToTable("DepartmentInfo", "dbo")
+                 .HasKey(d => d.DeptId);
+
+                d.Property(d => d.DeptId)
+                 .UseIdentityColumn(10, 10);
+
+                d.Property(d => d.Name)
+                 .HasColumnName("DepartmentName")
+                 .HasColumnType("nvarchar(50)")
+                 .IsRequired();
+
+                d.Property(d => d.CreationDate)
+                 .HasColumnType("date")
+                 .HasComputedColumnSql("GETDATE()");
+            });
+            #endregion
+            #endregion
+        }
 
 
         #region DbSet
