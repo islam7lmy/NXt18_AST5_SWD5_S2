@@ -1,8 +1,10 @@
-﻿using EFCore.Entities;
+﻿using EFCore.Configurations;
+using EFCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,9 +43,9 @@ namespace EFCore.Contexts
             //    .HasDefaultValue("No Name");
             #endregion
             #region Shadow Property
-            modelBuilder.Entity<Employee>()
-                .Property<string>("Address")
-                .HasColumnType("nvarchar(100)");
+            //modelBuilder.Entity<Employee>()
+            //    .Property<string>("Address")
+            //    .HasColumnType("nvarchar(100)");
             #endregion
             #region Mapping To Class
             //modelBuilder.Entity<Department>()
@@ -66,30 +68,39 @@ namespace EFCore.Contexts
             //    .HasComputedColumnSql("GETDATE()");
 
             //efcore 3.1 new feature
-            modelBuilder.Entity<Department>(d =>
-            {
-                d.ToTable("DepartmentInfo", "dbo")
-                 .HasKey(d => d.DeptId);
+            //modelBuilder.Entity<Department>(d =>
+            //{
+            //    d.ToTable("DepartmentInfo", "dbo")
+            //     .HasKey(d => d.DeptId);
 
-                d.Property(d => d.DeptId)
-                 .UseIdentityColumn(10, 10);
+            //    d.Property(d => d.DeptId)
+            //     .UseIdentityColumn(10, 10);
 
-                d.Property(d => d.Name)
-                 .HasColumnName("DepartmentName")
-                 .HasColumnType("nvarchar(50)")
-                 .IsRequired();
+            //    d.Property(d => d.Name)
+            //     .HasColumnName("DepartmentName")
+            //     .HasColumnType("nvarchar(50)")
+            //     .IsRequired();
 
-                d.Property(d => d.CreationDate)
-                 .HasColumnType("date")
-                 .HasComputedColumnSql("GETDATE()");
-            });
+            //    d.Property(d => d.CreationDate)
+            //     .HasColumnType("date")
+            //     .HasComputedColumnSql("GETDATE()");
+            //});
             #endregion
+            #endregion
+
+            #region 4. ConfigurationClass Per Entity => Organized 3rd way
+            //modelBuilder.ApplyConfiguration<Department>(new DepartmentConfigurations());
+            //modelBuilder.ApplyConfiguration<Employee>(new EmployeeConfigurations());
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             #endregion
         }
 
 
         #region DbSet
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
         #endregion
     }
 }

@@ -14,7 +14,7 @@ namespace EFCore.Entities
     /// 2. Data Annotations [set of attributes used for valdation]
     /// 3. Fluent API (set of methods to do congfigurations)
     /// 4. ConfigurationClass Per Entity => Organized 3rd way 
-    #endregion
+
 
 
     #region 1. By Convention (Default)
@@ -52,12 +52,40 @@ namespace EFCore.Entities
     #endregion
 
     #region 3. Fluent API
-    internal class Employee
+    //internal class Employee
+    //{
+    //    public int EmployeeId { get; set; }
+    //    public string FirstName { get; set; }
+    //    public double? Salary { get; set; }
+    //    public int Age { get; set; }
+    //}
+    #endregion
+    #endregion
+
+    #region RealtionShipMapping
+    ///Fk + Navigational Property
+
+    class Employee
     {
-        public int EmployeeId { get; set; }
-        public string FirstName { get; set; }
-        public double? Salary { get; set; }
-        public int Age { get; set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public double Salary { get; set; }
+        public int? Age { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
+        public double NetSalary { get => Salary * .9; }
+
+        //FK => ClassName + PK
+        //[ForeignKey(nameof(Department))]
+        public int DepartmentDeptId { get; set; }
+
+        //navigational property
+        //[InverseProperty(nameof(Department.Employees))]
+        //public Department Department { get; set; }
+
+        //navigational property
+        //[InverseProperty(nameof(Department.Manager))]
+        //public Department DepartmentToManage { get; set; }
     }
     #endregion
 }
