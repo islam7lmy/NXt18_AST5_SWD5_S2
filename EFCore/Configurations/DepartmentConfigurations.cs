@@ -25,9 +25,9 @@ namespace EFCore.Configurations
              .HasColumnType("nvarchar(50)")
              .IsRequired();
 
-            d.Property(d => d.CreationDate)
-             .HasColumnType("date")
-             .HasComputedColumnSql("GETDATE()");
+            //d.Property(d => d.CreationDate)
+            // .HasColumnType("date")
+            // .HasComputedColumnSql("GETDATE()");
 
 
             //d.HasMany(x => x.Employees)

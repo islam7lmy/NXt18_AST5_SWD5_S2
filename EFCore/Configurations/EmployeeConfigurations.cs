@@ -16,15 +16,15 @@ namespace EFCore.Configurations
             //builder.Property<string>("Address")
             //    .HasColumnType("nvarchar(100)");
 
-            //builder.HasOne(e => e.Department)
-            //    .WithMany(d => d.Employees)
-            //    .HasForeignKey(e => e.DepartmentDeptId)
-            //    .OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasOne<Department>()
-                .WithMany()
-                .HasForeignKey(e=>e.DepartmentDeptId)
+            builder.HasOne(e => e.Department)
+                .WithMany(d => d.Employees)
+                .HasForeignKey(e => e.DepartmentDeptId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            //builder.HasOne<Department>()
+            //    .WithMany()
+            //    .HasForeignKey(e=>e.DepartmentDeptId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
 
 

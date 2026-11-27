@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20261123180339_ManyToManyRealtionShip")]
-    partial class ManyToManyRealtionShip
+    [Migration("20261127124533_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace EFCore.Migrations
                         .HasColumnType("date")
                         .HasComputedColumnSql("GETDATE()");
 
-                    b.Property<int>("ManagerId")
+                    b.Property<int?>("ManagerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -69,7 +69,8 @@ namespace EFCore.Migrations
                     b.HasKey("DeptId");
 
                     b.HasIndex("ManagerId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ManagerId] IS NOT NULL");
 
                     b.ToTable("DepartmentInfo", "dbo");
                 });
@@ -85,7 +86,7 @@ namespace EFCore.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<int>("DepartmentDeptId")
+                    b.Property<int?>("DepartmentDeptId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -147,8 +148,7 @@ namespace EFCore.Migrations
                     b.HasOne("EFCore.Entities.Employee", null)
                         .WithOne()
                         .HasForeignKey("EFCore.Entities.Department", "ManagerId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("EFCore.Entities.Employee", b =>
@@ -156,8 +156,7 @@ namespace EFCore.Migrations
                     b.HasOne("EFCore.Entities.Department", null)
                         .WithMany()
                         .HasForeignKey("DepartmentDeptId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("EFCore.Entities.StudentCourse", b =>
